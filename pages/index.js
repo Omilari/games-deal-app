@@ -1,9 +1,11 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+import { Carousel } from 'react-bootstrap'
 
 export default function Home() {
   return (
+    
     <div className={styles.container}>
       <Head>
         <title>Create Next App</title>
@@ -12,6 +14,15 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
+        <Carousel>
+          <Carousel.Item>
+            <img className="d-block w-100" src="http://" alt="test" />
+            <Carousel.Caption>
+              <h3>First Slide Label</h3>
+              <p>Something to type in the Carousel</p>
+            </Carousel.Caption>
+          </Carousel.Item>
+        </Carousel>
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
