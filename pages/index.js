@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import { Carousel } from 'react-bootstrap'
+import Link from 'next/link'
 
 export default function Home() {
   return (
@@ -24,7 +25,7 @@ export default function Home() {
           </Carousel.Item>
         </Carousel>
         <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+          Welcome to <Link href="/game_search"><a>Game Search</a></Link>
         </h1>
 
         <p className={styles.description}>
