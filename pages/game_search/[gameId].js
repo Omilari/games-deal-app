@@ -1,5 +1,4 @@
 import {Accordion, Card, Image} from 'react-bootstrap'
-import DealList from '../../components/deal_list';
 
 export async function getServerSideProps({query}){
     const { gameId } = query;
@@ -25,7 +24,7 @@ export default function gameSpecifics({data}) {
                     <Card.Subtitle>Steam App Id: {info.steamAppID}</Card.Subtitle>
                 </Card.ImgOverlay>
             </Card>
-            <DealList deals={deals}/>
+
         
         </>
     )
