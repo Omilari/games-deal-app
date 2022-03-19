@@ -1,6 +1,7 @@
 import { Card } from "react-bootstrap";
 import Link from 'next/link'
 
+//thumb on main component 
 const GameList = ({res}) => res.map(game => {
     return(
         <Link href='/game_search/[gameId]' as={`/game_search/${game.gameID}`}>

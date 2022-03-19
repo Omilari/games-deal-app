@@ -15,6 +15,24 @@ export async function getServerSideProps({query}){
 export default function gameSpecifics({data}) {
     const { info, deals } = data;
 
+    //maps the deals and returns list game deals and associated stores
+    const dealComp = deals.map(deal => {
+        
+        return(
+            <div>
+                <Card key={deal.storeID}>
+                    <Card.Title>Store ID: {deal.storeID}</Card.Title>
+                    <Card.Subtitle>Retail Price: {deal.retailPrice}</Card.Subtitle>
+                    <Card.Text>Price: {deal.price}</Card.Text>
+                    <Card.Text>DealID: {deal.dealID}</Card.Text>
+                    <Card.Text>Savings: {deal.savings}</Card.Text>
+                </Card>
+            </div>
+        )
+    })
+
+
+    //returns the specific game info
     return (
         <>
             <Card style={{ width: '25rem'}} inverse>
@@ -24,6 +42,7 @@ export default function gameSpecifics({data}) {
                     <Card.Subtitle>Steam App Id: {info.steamAppID}</Card.Subtitle>
                 </Card.ImgOverlay>
             </Card>
+            {dealComp}
 
         
         </>
