@@ -2,18 +2,26 @@ import {Accordion, Card, Image} from 'react-bootstrap'
 
 export async function getServerSideProps({query}){
     const { gameId } = query;
-    const res = await fetch(`https://www.cheapshark.com/api/1.0/games?id=${gameId}`);
-    const data = await res.json();
+    const [res, res2] = await Promise.all([
+        fetch(`https://www.cheapshark.com/api/1.0/games?id=${gameId}`),
+        fetch(`https://www.cheapshark.com/api/1.0/stores`)
 
+    ]);
+    const [data, data2] = await Promise.all([
+        res.json(),
+        res2.json()
+    ]);
     return {
         props: {
-            data
+            data,
+            data2
         }
     }
 }
 
-export default function gameSpecifics({data}) {
+export default function gameSpecifics({data}, {data2}) {
     const { info, deals } = data;
+    const list = data2
 
     //maps the deals and returns list game deals and associated stores
     const dealComp = deals.map(deal => {
@@ -21,7 +29,7 @@ export default function gameSpecifics({data}) {
         return(
             <div>
                 <Card key={deal.storeID}>
-                    <Card.Title>Store ID: {deal.storeID}</Card.Title>
+                    <Card.Title>Store ID: {list[deal.storeID].storeName}</Card.Title>
                     <Card.Subtitle>Retail Price: {deal.retailPrice}</Card.Subtitle>
                     <Card.Text>Price: {deal.price}</Card.Text>
                     <Card.Text>DealID: {deal.dealID}</Card.Text>

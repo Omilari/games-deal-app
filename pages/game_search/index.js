@@ -2,6 +2,7 @@ import { Button, Card, Form, } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import  GameList  from "../../components/game_thumb";
 import  Navigation  from "../../components/navigate";
+import '../../styles/GameSearch.module.css'
 
 
 
@@ -53,17 +54,22 @@ const Search_Home = ({data}) => {
                 <Navigation />
                 <h1>This is the Game Search Home</h1>
                 <p>It is in developement. I am testing routing</p>
-                <Form >
-                    <Form.Group className="mb-3" controlId="formGameSearch">
-                        <Form.Label>Game Search</Form.Label>
-                        <Form.Control name="game_title" type="search" placeholder="Search A Game" onChange={e => setQuery(e.target.value)}></Form.Control>
-                        <Form.Text className="text-muted"> There is an extensive Catalog </Form.Text>
-                    </Form.Group>
-                    <Button variant="dark" type="submit" >
-                        Search
-                    </Button>
-                </Form>
-                <GameList res={defaultResults} />
+                <div className="col-8">
+                    <Form >
+                        <Form.Group className="mb-3" controlId="formGameSearch">
+                            <Form.Label>Game Search</Form.Label>
+                            <Form.Control name="game_title" type="search" placeholder="Search A Game" onChange={e => setQuery(e.target.value)}></Form.Control>
+                            <Form.Text className="text-muted"> There is an extensive Catalog </Form.Text>
+                        </Form.Group>
+                        <Button variant="dark" type="submit" >
+                            Search
+                        </Button>
+                    </Form>
+                </div>
+                <div className="container" style={{display:"flex"}}>
+                    <GameList res={defaultResults} />
+                </div>
+
                 
             </div>
         </>

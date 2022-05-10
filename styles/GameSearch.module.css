@@ -1,0 +1,4 @@
+.gameCard {
+  list-style-type: none;
+  columns: 3 auto;
+}
